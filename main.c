@@ -12,7 +12,7 @@ ISR(INT0_vect)
 {
    _delay_ms(10);
 
-   if ((button == 0) && (PINB & 1<<PINB2))
+   if ((button == 0) && !(PINB & 1<<PINB2))
    {
       // got a button push, increment night counter, set correct number of lights
       button = 1;
@@ -20,7 +20,7 @@ ISR(INT0_vect)
       if (night < 0) night=MAX_NIGHT;
       PORTA = 0xFF >> night;
    }
-   else if ((button == 1) && !(PINB & 1<<PINB2))
+   else if ((button == 1) && (PINB & 1<<PINB2))
    {
       button = 0;
    }
@@ -34,7 +34,7 @@ int main(void)
    PUEB = 1<<PUEB2;  // turn on pull-up for B2
    PORTB = 1<< PORTB1; // shamash should always be on
 
-   MCUCR = 1<<SM1 | 1<<SE; //1<<ISC01; //generate INT0 on falling edge
+   MCUCR = 1<<SM1 | 1<<SE; //generate INT0 on falling edge
    GIMSK = 1; // allow INT0 to be generated
    sei(); // enable interrupts
 
