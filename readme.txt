@@ -36,6 +36,7 @@ Assembly instructions
 	ii) place processor, aligning pin 1 to the top left (dot on PCB to dot on processor)	
 	iii) Solder all legs of processor to PCB (or reflow)
 	iv) visually inspect assembly for stray solder, weak connections, etc - clean up where necessary
+
 2) Solder pins(3) to PCB(1)
 	i) cut a row of 16 pins, solder to right side of PCB (pins 8-14, plus extra pins hanging off the bottom)
 	ii) cut a row of 8 pins (7 minimum) to left side of PCB (pins 1-7 and optionally empty hole)
@@ -45,6 +46,7 @@ Assembly instructions
 	ii) Bend resistor 90 degrees so it lies across the bottom of the PCB
 	iii) Solder second leg to extra pin (if in use)
 	iv) Solder the remainder of the second leg to pin 14 (or pad connected to pin 14) - ground
+
 4) Solder switch
 	i) pick 2 legs on the "short" side of the switch
 	ii) Solder one leg to a wire that connects to pin 5
@@ -55,7 +57,7 @@ Assembly instructions
 
 Programming
 -----------
-1) Connect programmer to board according to pinout
+1) Connect programmer to board according to pinout (white, yellow, grey, orange)
 2) Connect power to board (if programmer doesn't supply power)
 3) sudo make flash
 
@@ -66,11 +68,11 @@ ATTINY20 pinout:
 
 VCC    1   14 GND
 CLK    2   13 PA0
-MOSI   3   12 PA1
+PB1    3   12 PA1
 RESET  4   11 PA2
-MISO   5   10 PA3
-SCL    6    9 PA4
-SS     7    8 PA5
+INT0   5   10 PA3
+PA7    6    9 PA4
+PA6    7    8 PA5
 
 reset: RTS -> PIN 4 (orange)
 sck:   DTR -> PIN 2 (yellow)
